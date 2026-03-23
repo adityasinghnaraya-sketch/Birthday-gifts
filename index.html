@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Pratyusha 🎉</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 90%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #fff;
+      font-size: 1rem;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    /* Floating balloons */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 40px;
+      height: 60px;
+      background: red;
+      border-radius: 50%;
+      animation: float 8s infinite ease-in;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 40px;
+      background: #fff;
+      top: 60px;
+      left: 50%;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1;}
+      100% { transform: translateY(-120vh); opacity: 0;}
+    }
+
+    /* Confetti */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+  <h1>🎂 Happy Birthday Pratyusha 🎉</h1>
+  <p>
+Happy birthday pratyushaaaa🤭🤭🤭.....
+may God bless you with all happiness and prosperity....
+may u achieve all your dreams and reach the height...
+thank you for coming...
+ek saacha dost kam se kam mila...
+
+Loreto se nikle ke baad laga tha shyad hamari dosti tuut jayegi (long distance)
+butt abhi tak toh nhi hua I hope ham dono ka bass aase hi rahe dosti 🧿🧿🧿.....
+
+Also remember 😂😂🤭🤭 woo promises MISS FUTURE DR PRATYUSHA SRIVASTAVA...
+
+lastly hamesha khush raho aur bass aase hi haste raho.....
+
+I hope you like this 😅👉👈
+  </p>
+</div>
+
+<!-- Balloons -->
+<script>
+  for (let i = 0; i < 10; i++) {
+    let balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.background = `hsl(${Math.random()*360},70%,60%)`;
+    balloon.style.animationDuration = (6 + Math.random()*5) + "s";
+    document.body.appendChild(balloon);
+  }
+</script>
+
+<!-- Confetti Script -->
+<script>
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let pieces = [];
+
+for (let i = 0; i < 150; i++) {
+  pieces.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 8 + 2,
+    speed: Math.random() * 3 + 2,
+    angle: Math.random() * 360
+  });
+}
+
+function update() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  pieces.forEach(p => {
+    p.y += p.speed;
+    p.x += Math.sin(p.angle);
+
+    if (p.y > canvas.height) {
+      p.y = 0;
+      p.x = Math.random() * canvas.width;
+    }
+
+    ctx.fillStyle = `hsl(${p.angle}, 100%, 50%)`;
+    ctx.fillRect(p.x, p.y, p.size, p.size);
+  });
+
+  requestAnimationFrame(update);
+}
+
+update();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>
